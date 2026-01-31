@@ -1,0 +1,27 @@
+
+# Data and Logs
+*.csv
+*.txt
+*.log
+pipeline_log.txt
+spark_debug.txt
+spark_out.txt
+
+# MLflow
+mlruns/
+
+# Plots and Results
+plots/
+results/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# OS
+.DS_Store
+Thumbs.db

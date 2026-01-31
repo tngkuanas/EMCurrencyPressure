@@ -1,0 +1,40 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: em-currency-pressure
+  labels:
+    app: em-currency-pressure
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: em-currency-pressure
+  template:
+    metadata:
+      labels:
+        app: em-currency-pressure
+    spec:
+      containers:
+      - name: em-currency-pressure
+        image: em-currency-pressure:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: em-currency-pressure-service
+spec:
+  selector:
+    app: em-currency-pressure
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: LoadBalancer
